@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>مراجعة الدراسات الاجتماعية - ثانوي</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Tajawal',sans-serif;min-height:100vh;background:#0d1b2a;color:#1a1a2e;overflow-x:hidden}
+
+:root{
+  --navy:#0d1b2a;
+  --dark-blue:#1b2d45;
+  --mid-blue:#2c4a6e;
+  --light-blue:#3d6a9e;
+  --gold:#c9a84c;
+  --light-gold:#e8c96a;
+  --cream:#f8f4ec;
+  --white:#ffffff;
+  --green:#2e7d52;
+  --light-green:#e8f5ee;
+  --red:#c0392b;
+  --light-red:#fdecea;
+}
+
+.screen{display:none;min-height:100vh}
+.screen.active{display:block}
+
+/* ===== HOME ===== */
+#home{background:linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#f0f4f8 100%)}
+
+.top-bar{
+  background:linear-gradient(135deg,var(--navy),var(--dark-blue));
+  padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+}
+.top-bar-left{display:flex;align-items:center;gap:10px}
+.emblem{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--gold),var(--light-gold));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  box-shadow:0 3px 10px rgba(201,168,76,.4);
+}
+.top-text{color:var(--cream);font-size:9.5px;line-height:1.6}
+.top-text strong{font-size:11px;color:var(--light-gold);display:block}
+.top-badge{
+  background:rgba(201,168,76,.2);
+  border:1px solid rgba(201,168,76,.4);
+  border-radius:8px;padding:5px 10px;
+  color:var(--light-gold);font-size:9px;text-align:center;line-height:1.5;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--dark-blue) 60%,var(--mid-blue) 100%);
+  padding:28px 20px 32px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-40px;left:-40px;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-30px;right:-30px;
+  width:150px;height:150px;
+  background:radial-gradient(circle,rgba(61,106,158,.2) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,168,76,.15);
+  border:1px solid rgba(201,168,76,.3);
+  border-radius:20px;padding:4px 14px;
+  color:var(--light-gold);font-size:11px;font-weight:700;
+  margin-bottom:12px;
+}
+.hero-title{
+  font-size:34px;font-weight:900;
+  color:var(--white);
+  line-height:1.2;margin-bottom:6px;
+  position:relative;z-index:1;
+}
+.hero-title span{color:var(--light-gold);display:block}
+.hero-sub{
+  display:inline-block;
+  background:linear-gradient(135deg,#8B4513,#6b3410);
+  color:white;font-size:12px;font-weight:700;
+  padding:5px 20px;border-radius:30px;
+  margin-top:8px;
+  box-shadow:0 4px 15px rgba(139,69,19,.4);
+  position:relative;z-index:1;
+}
+
+.stats-row{
+  display:flex;justify-content:center;gap:12px;
+  padding:16px 20px 0;
+}
+.stat-pill{
+  background:white;border-radius:14px;
+  padding:12px 16px;text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  flex:1;max-width:100px;
+  border-top:3px solid var(--light-blue);
+}
+.stat-num{font-size:22px;font-weight:900;color:var(--dark-blue)}
+.stat-lbl{font-size:10px;color:#888;font-weight:600;margin-top:2px}
+
+.section-title{
+  text-align:center;font-size:15px;font-weight:800;
+  color:var(--dark-blue);
+  margin:20px 0 12px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.section-title::before,.section-title::after{
+  content:'';flex:1;max-width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--light-blue));
+}
+.section-title::after{background:linear-gradient(90deg,var(--light-blue),transparent)}
+
+.action-row{
+  display:flex;gap:10px;padding:0 16px;margin-bottom:16px;
+}
+.action-btn{
+  flex:1;background:white;border-radius:14px;
+  padding:14px 10px;text-align:center;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  transition:all .2s;border:2.5px solid transparent;
+  position:relative;overflow:hidden;
+}
+.action-btn::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.action-btn.blue::before{background:linear-gradient(90deg,var(--mid-blue),var(--light-blue))}
+.action-btn.gold::before{background:linear-gradient(90deg,var(--gold),var(--light-gold))}
+.action-btn.green::before{background:linear-gradient(90deg,#2e7d52,#4caf50)}
+.action-btn:active{transform:scale(.96);border-color:var(--light-blue)}
+.action-btn .ab-icon{font-size:28px;margin-bottom:6px}
+.action-btn .ab-label{font-size:12px;font-weight:800;color:var(--dark-blue)}
+.action-btn .ab-sub{font-size:10px;color:#888;margin-top:2px}
+
+.units-grid{padding:0 16px 24px;display:flex;flex-direction:column;gap:10px}
+
+.unit-card{
+  background:white;border-radius:16px;
+  padding:14px 16px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(0,0,0,.07);
+  transition:all .25s;border:2px solid transparent;
+  position:relative;overflow:hidden;
+}
+.unit-card::after{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--mid-blue),var(--light-blue));
+  border-radius:0 16px 16px 0;
+}
+.unit-card:active{transform:translateX(-4px);border-color:var(--mid-blue);box-shadow:0 8px 25px rgba(44,74,110,.2)}
+
+.unit-num{
+  width:48px;height:48px;
+  background:linear-gradient(135deg,var(--dark-blue),var(--mid-blue));
+  border-radius:13px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 4px 12px rgba(27,45,69,.3);
+}
+.unit-num .n{font-size:18px;font-weight:900;color:white;line-height:1}
+.unit-num .lbl{font-size:8px;color:rgba(255,255,255,.7)}
+
+.unit-info{flex:1}
+.unit-name{font-size:14px;font-weight:800;color:var(--dark-blue);margin-bottom:3px}
+.unit-desc{font-size:11px;color:#888}
+.unit-counts{display:flex;gap:6px;margin-top:6px}
+.count-chip{
+  background:#f0f4f8;border-radius:8px;
+  padding:3px 8px;font-size:10px;font-weight:700;color:var(--mid-blue);
+}
+.count-chip.green{background:var(--light-green);color:var(--green)}
+
+.unit-arrow{font-size:18px;color:var(--light-blue)}
+
+.footer-bar{
+  background:linear-gradient(135deg,var(--navy),var(--dark-blue));
+  color:white;text-align:center;
+  padding:14px 20px;font-size:12px;font-weight:700;
+  position:sticky;bottom:0;
+  box-shadow:0 -4px 20px rgba(0,0,0,.2);
+}
+.footer-bar span{color:var(--light-gold)}
+
+/* ===== UNIT SCREEN ===== */
+#unit-screen{background:linear-gradient(160deg,#f0f4f8,#e8eef5)}
+
+.unit-header{
+  background:linear-gradient(135deg,var(--navy),var(--dark-blue));
+  padding:16px 16px;
+  display:flex;align-items:center;gap:12px;color:white;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+}
+.back-btn{
+  background:rgba(255,255,255,.15);border:none;color:white;
+  width:38px;height:38px;border-radius:11px;cursor:pointer;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  font-family:'Tajawal',sans-serif;transition:background .2s;flex-shrink:0;
+}
+.back-btn:active{background:rgba(255,255,255,.3)}
+.uh-info{flex:1}
+.uh-title{font-size:16px;font-weight:800;color:white}
+.uh-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
+
+.unit-body{padding:16px;max-width:600px;margin:0 auto}
+
+.unit-hero-card{
+  background:linear-gradient(135deg,var(--dark-blue),var(--mid-blue));
+  border-radius:20px;padding:20px;
+  text-align:center;margin-bottom:16px;
+  box-shadow:0 8px 30px rgba(27,45,69,.3);
+}
+.uhc-icon{font-size:52px;margin-bottom:8px}
+.uhc-title{font-size:20px;font-weight:900;color:white;margin-bottom:6px}
+.uhc-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.uhc-chip{
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;padding:4px 14px;
+  color:white;font-size:11px;font-weight:700;
+}
+.uhc-chip.gold{background:rgba(201,168,76,.25);border-color:rgba(201,168,76,.5);color:var(--light-gold)}
+
+.unit-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.ua-card{
+  background:white;border-radius:14px;
+  padding:16px 12px;text-align:center;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  transition:all .25s;border:2px solid transparent;
+}
+.ua-card:active{transform:scale(.96);border-color:var(--mid-blue)}
+.ua-card.featured{background:linear-gradient(135deg,var(--dark-blue),var(--mid-blue));color:white}
+.ua-card .ua-icon{font-size:28px;margin-bottom:6px}
+.ua-card .ua-label{font-size:13px;font-weight:800;color:var(--dark-blue)}
+.ua-card.featured .ua-label{color:white}
+.ua-card .ua-sub{font-size:10px;color:#888;margin-top:3px}
+.ua-card.featured .ua-sub{color:rgba(255,255,255,.7)}
+
+/* ===== QUIZ SCREEN ===== */
+#quiz-screen{background:linear-gradient(160deg,var(--navy) 0%,var(--dark-blue) 100%)}
+
+.quiz-header{
+  background:rgba(0,0,0,.3);
+  padding:14px 16px;
+  display:flex;align-items:center;gap:10px;
+  backdrop-filter:blur(10px);
+}
+.qh-title{flex:1;color:white;font-size:13px;font-weight:800}
+.qh-counter{
+  background:rgba(255,255,255,.15);color:white;
+  border-radius:20px;padding:4px 14px;font-size:13px;font-weight:700;
+  border:1px solid rgba(255,255,255,.2);
+}
+
+.progress-wrap{background:rgba(0,0,0,.3);height:5px}
+.progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--light-blue),var(--gold));
+  transition:width .5s ease;border-radius:3px;
+}
+
+.quiz-body{padding:16px;max-width:600px;margin:0 auto}
+
+.q-card{
+  background:white;border-radius:20px;
+  padding:22px 18px;margin-bottom:14px;
+  box-shadow:0 12px 40px rgba(0,0,0,.3);
+  animation:slideUp .35s ease;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+.q-type-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#f0f4f8;border-radius:8px;padding:3px 10px;
+  font-size:10px;font-weight:700;color:var(--mid-blue);
+  margin-bottom:10px;
+}
+.q-num-badge{
+  width:30px;height:30px;
+  background:linear-gradient(135deg,var(--dark-blue),var(--mid-blue));
+  border-radius:9px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:white;
+  margin-bottom:10px;margin-left:8px;
+}
+.q-text{
+  font-size:16px;font-weight:700;color:#1a2e3b;
+  line-height:1.65;margin-bottom:18px;
+}
+
+/* MCQ Options */
+.options{display:flex;flex-direction:column;gap:9px}
+.option-btn{
+  background:#f8fafc;border:2.5px solid #e2e8f0;
+  border-radius:13px;padding:13px 14px;
+  text-align:right;cursor:pointer;
+  font-family:'Tajawal',sans-serif;
+  font-size:14px;font-weight:600;color:#2d3748;
+  transition:all .2s;
+  display:flex;align-items:center;gap:10px;
+}
+.option-btn:active:not(:disabled){transform:scale(.98)}
+.option-btn:hover:not(:disabled){border-color:var(--mid-blue);background:#f0f4f8}
+.option-btn.correct{background:#e8f5ee;border-color:#4caf50;color:#1b5e20}
+.option-btn.wrong{background:#fdecea;border-color:#f44336;color:#b71c1c}
+.opt-letter{
+  width:28px;height:28px;border-radius:8px;
+  background:var(--dark-blue);color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;flex-shrink:0;transition:background .2s;
+}
+.option-btn.correct .opt-letter{background:#4caf50}
+.option-btn.wrong .opt-letter{background:#f44336}
+
+/* TF Options */
+.tf-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tf-btn{
+  background:#f8fafc;border:2.5px solid #e2e8f0;
+  border-radius:13px;padding:16px;
+  text-align:center;cursor:pointer;
+  font-family:'Tajawal',sans-serif;
+  font-size:16px;font-weight:800;color:#2d3748;
+  transition:all .2s;
+}
+.tf-btn:active:not(:disabled){transform:scale(.96)}
+.tf-btn:hover:not(:disabled){border-color:var(--mid-blue);background:#f0f4f8}
+.tf-btn.correct{background:#e8f5ee;border-color:#4caf50;color:#1b5e20}
+.tf-btn.wrong{background:#fdecea;border-color:#f44336;color:#b71c1c}
+
+.feedback-box{
+  border-radius:13px;padding:13px 15px;
+  margin-top:12px;font-size:13px;font-weight:700;
+  display:none;align-items:center;gap:8px;line-height:1.5;
+}
+.feedback-box.show{display:flex}
+.feedback-box.correct-fb{background:#e8f5ee;color:#1b5e20;border:2px solid #4caf50}
+.feedback-box.wrong-fb{background:#fdecea;color:#b71c1c;border:2px solid #f44336}
+
+.next-btn{
+  width:100%;
+  background:linear-gradient(135deg,var(--dark-blue),var(--mid-blue));
+  color:white;border:none;border-radius:15px;
+  padding:15px;font-size:15px;font-weight:800;
+  font-family:'Tajawal',sans-serif;cursor:pointer;
+  transition:all .25s;display:none;margin-top:12px;
+  box-shadow:0 6px 20px rgba(27,45,69,.4);
+}
+.next-btn:active{transform:scale(.98)}
+.next-btn.show{display:block}
+
+/* ===== RESULT ===== */
+#result-screen{
+  min-height:100vh;
+  background:linear-gradient(160deg,var(--navy),var(--dark-blue));
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.result-card{
+  background:white;border-radius:24px;
+  padding:28px 22px;max-width:400px;width:100%;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  animation:popIn .45s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes popIn{from{opacity:0;transform:scale(.75)}to{opacity:1;transform:scale(1)}}
+.res-emoji{font-size:65px;margin-bottom:8px}
+.res-title{font-size:22px;font-weight:900;color:var(--dark-blue);margin-bottom:4px}
+.res-score{font-size:48px;font-weight:900;color:var(--mid-blue);line-height:1;margin:8px 0}
+.res-score span{font-size:20px;color:#888}
+.res-pct{font-size:18px;font-weight:800;margin-bottom:16px}
+.res-bars{margin:14px 0}
+.stat-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.stat-lbl{font-size:12px;font-weight:700;color:#555;width:70px;flex-shrink:0;text-align:right}
+.stat-bar-wrap{flex:1;height:9px;background:#eee;border-radius:5px;overflow:hidden}
+.stat-bar{height:100%;border-radius:5px;transition:width 1s ease}
+.stat-bar.g{background:linear-gradient(90deg,#4caf50,#66bb6a)}
+.stat-bar.r{background:linear-gradient(90deg,#f44336,#ef5350)}
+.stat-val{font-size:12px;font-weight:800;color:var(--dark-blue);width:26px;text-align:left}
+.res-actions{display:flex;gap:10px;margin-top:18px}
+.btn-retry,.btn-home{
+  flex:1;border:none;border-radius:13px;
+  padding:13px;font-size:13px;font-weight:800;
+  font-family:'Tajawal',sans-serif;cursor:pointer;transition:all .2s;
+}
+.btn-retry{background:linear-gradient(135deg,var(--dark-blue),var(--mid-blue));color:white}
+.btn-retry:active{transform:scale(.97)}
+.btn-home{background:#f0f4f8;color:var(--dark-blue);border:2px solid var(--dark-blue)}
+.btn-home:active{background:var(--dark-blue);color:white}
+
+/* ===== ALL-Q SCREEN ===== */
+#allq-screen{background:linear-gradient(160deg,#f0f4f8,#e8eef5)}
+.allq-body{padding:14px;max-width:600px;margin:0 auto}
+.allq-section-title{
+  font-size:13px;font-weight:800;color:var(--mid-blue);
+  padding:8px 12px;background:var(--dark-blue);color:white;
+  border-radius:10px;margin:12px 0 8px;
+  display:flex;align-items:center;gap:8px;
+}
+.q-item{
+  background:white;border-radius:13px;
+  padding:13px 14px;margin-bottom:8px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  border-right:4px solid var(--mid-blue);
+}
+.q-item.tf-item{border-right-color:var(--green)}
+.qi-num{font-size:10px;font-weight:700;color:var(--mid-blue);margin-bottom:4px}
+.qi-text{font-size:13px;font-weight:700;color:#1a2e3b;margin-bottom:7px;line-height:1.5}
+.qi-answer{
+  display:inline-flex;align-items:center;gap:6px;
+  border-radius:8px;padding:4px 10px;
+  font-size:11px;font-weight:700;
+}
+.qi-answer.correct-a{background:var(--light-green);color:var(--green)}
+.qi-answer.tf-t{background:var(--light-green);color:var(--green)}
+.qi-answer.tf-f{background:var(--light-red);color:var(--red)}
+
+/* Responsive */
+@media(max-width:380px){
+  .hero-title{font-size:26px}
+  .q-text{font-size:14px}
+  .option-btn{font-size:13px;padding:11px 12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HOME ===== -->
+<div id="home" class="screen active">
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="emblem">🌙</div>
+      <div class="top-text">
+        <strong>المملكة العربية السعودية</strong>
+        وزارة التعليم · الشؤون التعليمية<br>
+        قسم الإشراف التربوي
+      </div>
+    </div>
+    <div class="top-badge">مراجعة<br>ثانوي</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-tag">📚 الفصل الدراسي الثاني 1447هـ</div>
+    <div class="hero-title">
+      مراجعة
+      <span>الدراسات الاجتماعية</span>
+    </div>
+    <div class="hero-sub">أ. ماجد الحربي · المرحلة الثانوية</div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-pill">
+      <div class="stat-num">4</div>
+      <div class="stat-lbl">وحدات</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-num">80+</div>
+      <div class="stat-lbl">اختيار</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-num">120+</div>
+      <div class="stat-lbl">صح/خطأ</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:20px">ابدأ الاختبار</div>
+
+  <div class="action-row" style="padding:0 16px 0">
+    <div class="action-btn blue" onclick="startAllMCQ()">
+      <div class="ab-icon">🎯</div>
+      <div class="ab-label">اختبار شامل</div>
+      <div class="ab-sub">اختيار من متعدد</div>
+    </div>
+    <div class="action-btn gold" onclick="startAllTF()">
+      <div class="ab-icon">✅</div>
+      <div class="ab-label">صح وخطأ</div>
+      <div class="ab-sub">جميع الوحدات</div>
+    </div>
+    <div class="action-btn green" onclick="startMixed()">
+      <div class="ab-icon">🎲</div>
+      <div class="ab-label">مختلط</div>
+      <div class="ab-sub">عشوائي</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:20px">الوحدات الدراسية</div>
+
+  <div class="units-grid" id="units-list"></div>
+
+  <div class="footer-bar">
+    نعزز التفوق في <span>الدراسات الاجتماعية</span> لبناء جيل مبدع وواعد
+  </div>
+</div>
+
+<!-- ===== UNIT SCREEN ===== -->
+<div id="unit-screen" class="screen">
+  <div class="unit-header">
+    <button class="back-btn" onclick="showScreen('home')">←</button>
+    <div class="uh-info">
+      <div class="uh-title" id="uh-title">الوحدة</div>
+      <div class="uh-sub" id="uh-sub">تفاصيل الوحدة</div>
+    </div>
+  </div>
+  <div class="unit-body">
+    <div class="unit-hero-card">
+      <div class="uhc-icon" id="uhc-icon">📘</div>
+      <div class="uhc-title" id="uhc-title">اسم الوحدة</div>
+      <div class="uhc-chips">
+        <div class="uhc-chip" id="uhc-mcq">0 اختيار</div>
+        <div class="uhc-chip gold" id="uhc-tf">0 صح/خطأ</div>
+      </div>
+    </div>
+    <div class="unit-actions">
+      <div class="ua-card featured" onclick="startUnitMCQ()">
+        <div class="ua-icon">📝</div>
+        <div class="ua-label">اختيار متعدد</div>
+        <div class="ua-sub">جميع الأسئلة</div>
+      </div>
+      <div class="ua-card" onclick="startUnitTF()">
+        <div class="ua-icon">✅</div>
+        <div class="ua-label">صح وخطأ</div>
+        <div class="ua-sub">جميع الفقرات</div>
+      </div>
+      <div class="ua-card" onclick="startUnitRandom()">
+        <div class="ua-icon">🎲</div>
+        <div class="ua-label">عشوائي</div>
+        <div class="ua-sub">15 سؤال</div>
+      </div>
+      <div class="ua-card" onclick="showUnitAllQ()">
+        <div class="ua-icon">📋</div>
+        <div class="ua-label">مراجعة</div>
+        <div class="ua-sub">مع الإجابات</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUIZ SCREEN ===== -->
+<div id="quiz-screen" class="screen">
+  <div class="quiz-header">
+    <button class="back-btn" onclick="exitQuiz()">←</button>
+    <div class="qh-title" id="qh-title">الاختبار</div>
+    <div class="qh-counter" id="qh-counter">1/10</div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+  </div>
+  <div class="quiz-body">
+    <div class="q-card">
+      <div style="display:flex;align-items:center;margin-bottom:10px">
+        <div class="q-num-badge" id="q-num-badge">1</div>
+        <div class="q-type-badge" id="q-type-badge">📝 اختيار من متعدد</div>
+      </div>
+      <div class="q-text" id="q-text">نص السؤال</div>
+      <div id="answers-container"></div>
+      <div class="feedback-box" id="feedback-box">
+        <span id="fb-icon">✅</span>
+        <span id="fb-text">إجابة صحيحة!</span>
+      </div>
+    </div>
+    <button class="next-btn" id="next-btn" onclick="nextQ()">التالي ←</button>
+  </div>
+</div>
+
+<!-- ===== RESULT ===== -->
+<div id="result-screen" class="screen">
+  <div class="result-card">
+    <div class="res-emoji" id="res-emoji">🏆</div>
+    <div class="res-title" id="res-title">ممتاز!</div>
+    <div class="res-score"><span id="res-correct">0</span><span> / <span id="res-total">0</span></span></div>
+    <div class="res-pct" id="res-pct" style="color:#4caf50">100%</div>
+    <div class="res-bars">
+      <div class="stat-row">
+        <div class="stat-lbl">✅ صحيح</div>
+        <div class="stat-bar-wrap"><div class="stat-bar g" id="bar-c" style="width:0%"></div></div>
+        <div class="stat-val" id="val-c">0</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-lbl">❌ خطأ</div>
+        <div class="stat-bar-wrap"><div class="stat-bar r" id="bar-w" style="width:0%"></div></div>
+        <div class="stat-val" id="val-w">0</div>
+      </div>
+    </div>
+    <div class="res-actions">
+      <button class="btn-retry" onclick="retryQuiz()">🔄 إعادة</button>
+      <button class="btn-home" onclick="showScreen('home')">🏠 الرئيسية</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ALL-Q SCREEN ===== -->
+<div id="allq-screen" class="screen">
+  <div class="unit-header">
+    <button class="back-btn" onclick="goBackAllQ()">←</button>
+    <div class="uh-info">
+      <div class="uh-title" id="allq-title">مراجعة الأسئلة</div>
+      <div class="uh-sub" id="allq-sub">مع الإجابات الصحيحة</div>
+    </div>
+  </div>
+  <div class="allq-body" id="allq-body"></div>
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const UNITS = [
+  {
+    id:1, name:"المملكة العربية السعودية ومكانتها", icon:"🇸🇦",
+    desc:"النظام السياسي، الدور الدبلوماسي، المنظمات الدولية",
+    mcq:[
+      {q:"ما هو الأساس الذي يُعد دستور المملكة العربية السعودية؟", opts:["النظام الأساسي للحكم","كتاب الله تعالى وسنة رسوله صلى الله عليه وسلم","الاتفاقيات الدولية","القوانين الوضعية"], ans:1},
+      {q:"يرجع الفضل في توحيد المملكة العربية السعودية تحت مسماها الحالي إلى جهود:", opts:["الإمام محمد بن سعود","الملك فيصل بن عبد العزيز","الملك عبد العزيز بن عبد الرحمن آل سعود","مانع المريدي"], ans:2},
+      {q:"أي من المقومات التالية يمنح المملكة ميزة اقتصادية تنافسية لكونها حلقة وصل بين ثلاث قارات؟", opts:["المقوم الديني","المقوم الحضاري","المقوم السياسي","المقوم الجغرافي"], ans:3},
+      {q:"يعتمد النظام الملكي في المملكة العربية السعودية على مبدأ إسلامي أصيل هو:", opts:["الشورى","الانتخابات المباشرة","البيعة","التداول السلمي"], ans:0},
+      {q:"ما هو الدور الاقتصادي الأبرز للمملكة العربية السعودية على المستوى العالمي؟", opts:["كونها أكبر دولة سياحية","كونها قوة رائدة في إنتاج وتصدير النفط","كونها أكبر مصدر للمنتجات الزراعية","كونها مركزاً عالمياً للصناعات التكنولوجية"], ans:1},
+      {q:"ما هو الإنجاز الدبلوماسي الأبرز الذي قادته المملكة العربية السعودية لإنهاء الحرب الأهلية في لبنان؟", opts:["مؤتمر مدريد","اتفاق الطائف","اتفاقيات أوسلو","قمة الرياض للسلم"], ans:1},
+      {q:"ما هو الإجراء التاريخي الذي اتخذه الملك فيصل بن عبد العزيز في حرب 1973م لدعم مصر وسوريا؟", opts:["إرسال مساعدات غذائية فقط","إصدار بيان تنديد","قيادة حظر تصدير النفط للدول الداعمة لإسرائيل","طلب عقد اجتماع للأمم المتحدة"], ans:2},
+      {q:"كيف دعمت المملكة بقيادة الملك سعود الثورة الجزائرية ضد الاستعمار الفرنسي؟", opts:["بإرسال جيش لدعم الثوار","بقطع العلاقات مع فرنسا فقط","بتقديم دعم مالي سنوي وتنظيم حملات تبرعات شعبية","بتقديم الدعم الإعلامي فقط"], ans:2},
+      {q:"ماذا أطلق خادم الحرمين الشريفين الملك سلمان على القمة العربية الـ29 التي عُقدت في الظهران عام 1439هـ؟", opts:["قمة التضامن","قمة السلم","قمة القدس","قمة الظهران"], ans:2},
+      {q:"ما هي المبادرة الشاملة للسلام التي قدمها الملك عبدالله بن عبد العزيز عام 2002م وتبنتها جامعة الدول العربية؟", opts:["مبادرة السلام العربية","مشروع الشرق الأوسط الجديد","خارطة الطريق","اتفاقية وادي عربة"], ans:0},
+      {q:"ما هو الإجراء السياسي المهم الذي اتخذته المملكة لدعم البوسنة والهرسك في بداية أزمتها؟", opts:["إرسال قوات عسكرية","الاعتراف الرسمي باستقلالها","قطع العلاقات مع صربيا","فرض عقوبات اقتصادية"], ans:1},
+      {q:"كان الهدف الرئيسي من اجتماع الفرقاء الأفغان في مكة المكرمة عام 1413هـ بدعوة من الملك فهد هو:", opts:["تأسيس حكومة جديدة","توقيع اتفاقية الصلح والسلم بينهم","طلب مساعدات مالية إضافية","مناقشة إعادة الإعمار"], ans:1},
+      {q:"ترأس خادم الحرمين الشريفين الملك سلمان (عندما كان أميراً للرياض) هيئة متخصصة لدعم:", opts:["متضرري الزلازل في باكستان","قضية فلسطين","قضية البوسنة والهرسك","الجفاف في الصومال"], ans:2},
+      {q:"ما هو السبب المباشر الذي أدى إلى اندلاع الأزمة في البوسنة والهرسك في أوائل التسعينيات؟", opts:["أزمة اقتصادية عالمية","تفكك جمهورية يوغسلافيا الاتحادية","نزاع حدودي مع كرواتيا","كارثة طبيعية"], ans:1},
+      {q:"تضمن الدعم الإنساني السعودي للاجئين الأفغان في باكستان بشكل أساسي:", opts:["منحهم الجنسية السعودية","توفير فرص عمل لهم في المملكة","إقامة معسكرات إيواء وتوفير الرعاية الصحية والاجتماعية","تدريبهم عسكرياً فقط"], ans:2},
+      {q:"في أي عام تم الإعلان عن تشكيل التحالف الإسلامي العسكري لمحاربة الإرهاب؟", opts:["2013م","2014م","2015م","2016م"], ans:2},
+      {q:"أحد الأهداف الرئيسية لحركة عدم الانحياز هو:", opts:["تشكيل حلف عسكري ثالث","التدخل في شؤون الدول لحل النزاعات","احترام سيادة الدول وعدم الاعتداء عليها","دعم المصالح الاقتصادية للدول الكبرى"], ans:2},
+      {q:"أي من التالي يعد أحد المرتكزات الاستراتيجية للمركز العالمي لمكافحة الفكر المتطرف (اعتدال)؟", opts:["المرتكز العسكري","المرتكز الاقتصادي","المرتكز الرقمي","المرتكز السياسي"], ans:2},
+      {q:"ما هو الهدف الأساسي من تأسيس مركز الملك سلمان للإغاثة والأعمال الإنسانية؟", opts:["دعم المشاريع التجارية في الدول النامية","تقديم العون والمساعدة للمجتمعات التي تعاني الكوارث والأزمات","تنظيم مؤتمرات سياسية دولية","تمويل الحملات الإعلامية فقط"], ans:1},
+      {q:"يهدف التحالف الإسلامي العسكري إلى محاربة الإرهاب في مجالات متعددة، منها:", opts:["المجال الثقافي فقط","المجال الفكري والإعلامي والعسكري","المجال الرياضي فقط","المجال السياحي"], ans:1},
+      {q:"أي من التالي يعد من المقومات السياسية التي تدعم قوة الدولة؟", opts:["تصدير الأسلحة الحديثة","وجود نظام حكم مستقر وإطار قانوني واضح","جذب أعداد كبيرة من السياح","التقدم في مجال الإنترنت والفضاء السيبراني"], ans:1},
+      {q:"العنصر الذي يشمل الموقع الجغرافي وعدد السكان المتعلم والعمق التاريخي يندرج تحت المقومات:", opts:["الاقتصادية","العسكرية","الحضارية","الوطنية"], ans:2},
+      {q:"تُصنف القدرة على الابتكار وتطوير البرامج والسيطرة على الفضاء السيبراني ضمن المقومات:", opts:["التقنية","السياسية","السياحية","الدينية"], ans:0},
+      {q:"المؤسسات التي تعنى بالأمن الداخلي والاستقرار مثل أمن الدولة والاستخبارات تمثل المقومات:", opts:["العسكرية","السياسية","الوطنية","الاقتصادية"], ans:2},
+      {q:"كيف تساهم المقومات السياحية في قوة الدولة بشكل مباشر؟", opts:["عن طريق زيادة القدرة على التصنيع العسكري","عن طريق دعم الاقتصاد من خلال جذب الزوار","عن طريق تعزيز الاستقرار السياسي الداخلي","عن طريق تطوير القدرات التقنية الرقمية"], ans:1},
+      {q:"في أي عام ميلادي تم التوقيع على ميثاق جامعة الدول العربية؟", opts:["1941","1950","1944","1945"], ans:3},
+      {q:"ما المدينة التي تم اختيارها لتكون مقراً للأمانة العامة لمجلس التعاون لدول الخليج العربي؟", opts:["أبو ظبي","الكويت","الرياض","المنامة"], ans:2},
+      {q:"أحد الأسس التالية لا يعد من الأسس التي قام عليها مجلس التعاون الخليجي:", opts:["المصير المشترك","الأنظمة السياسية الموحدة تماماً","الروابط الدينية والاجتماعية","وحدة الهدف"], ans:1},
+      {q:"الدعوة الأولى لعقد مباحثات تأسيس جامعة الدول العربية وجهها رئيس وزراء دولة:", opts:["المملكة العربية السعودية","العراق","لبنان","مصر"], ans:3},
+      {q:"لعب الملك ... دوراً بارزاً في الدعوة لتأسيس مجلس التعاون الخليجي لمواجهة التحديات المحيطة:", opts:["عبد العزيز","فيصل بن عبد العزيز","سعود بن عبد العزيز","خالد بن عبد العزيز"], ans:3},
+    ],
+    tf:[
+      {q:"يقتصر الإرث الحضاري للمملكة العربية السعودية على التاريخ الإسلامي فقط.", ans:false},
+      {q:"تأسست الدولة السعودية الأولى في القرن الثاني عشر الهجري.", ans:true},
+      {q:"تُعد الأسرة نواة المجتمع السعودي، ويُربى أفرادها على أساس العقيدة الإسلامية.", ans:true},
+      {q:"تقع المملكة العربية السعودية على مسطح مائي واحد فقط هو الخليج العربي.", ans:false},
+      {q:"المملكة العربية السعودية عضو مؤسس في هيئة الأمم المتحدة.", ans:true},
+      {q:"اقتصر دعم المملكة العربية السعودية للقضايا العربية على الجانب المادي فقط.", ans:false},
+      {q:"يعتبر موقف المملكة العربية السعودية من القضية الفلسطينية ثابتاً ومستمراً منذ عهد الملك عبد العزيز حتى اليوم.", ans:true},
+      {q:"كان الهدف من اتفاق الطائف هو تقسيم لبنان إلى دويلات صغيرة.", ans:false},
+      {q:"وقفت المملكة العربية السعودية على الحياد أثناء العدوان الثلاثي على مصر عام 1956م.", ans:false},
+      {q:"رسالة الملك عبد العزيز للرئيس الأمريكي روزفلت كانت من أوائل المواقف السعودية الرسمية التي شرحت الحق العربي في فلسطين.", ans:true},
+      {q:"اقتصر دور المملكة العربية السعودية في القضايا الإسلامية على الدعم المالي فقط.", ans:false},
+      {q:"كان الغزو السوفييتي لأفغانستان عام 1979م سبباً رئيسياً لبداية الدعم السعودي المنظم لهذه القضية.", ans:true},
+      {q:"دعا الملك فهد بن عبدالعزيز الفرقاء الأفغان للاجتماع في مكة المكرمة بهدف حل خلافاتهم وتحقيق السلام.", ans:true},
+      {q:"كان الاعتراف السعودي باستقلال البوسنة والهرسك عاملاً مهماً ودافعاً قوياً للدول الأخرى للاعتراف بها.", ans:true},
+      {q:"كان الدعم المقدم للبوسنة والهرسك جهداً حكومياً فقط ولم يتضمن تبرعات شعبية.", ans:false},
+      {q:"ظهرت حركة عدم الانحياز كنتيجة مباشرة للصراع بين المعسكرين الغربي والشرقي بعد الحرب العالمية الثانية.", ans:true},
+      {q:"تُقدَّم المساعدات من مركز الملك سلمان للإغاثة والأعمال الإنسانية بناءً على اعتبارات سياسية أو دينية.", ans:false},
+      {q:"يركز المركز العالمي لمكافحة الفكر المتطرف (اعتدال) على المواجهة العسكرية فقط.", ans:false},
+      {q:"دور المملكة العربية السعودية في حركة عدم الانحياز يقتصر على الحضور في المؤتمرات دون أي دور فاعل.", ans:false},
+      {q:"موقف الإسلام من التطرف والغلو هو الرفض التام، حيث يدعو الدين إلى الوسطية والاعتدال.", ans:true},
+      {q:"تقتصر مقومات الدولة القوية والمؤثرة على الجانب العسكري فقط.", ans:false},
+      {q:"يعتبر وجود نظام قانوني واضح ومؤسسات فاعلة جزءاً أساسياً من المقومات السياسية للدولة.", ans:true},
+      {q:"المقومات الاقتصادية والمقومات التقنية هما وجهان لعملة واحدة ولا يوجد فرق بينهما.", ans:false},
+      {q:"يُعد العمق التاريخي والتجربة الناضجة للدولة من ضمن مقوماتها الحضارية.", ans:true},
+      {q:"المقومات الوطنية تركز على حماية الدولة من التهديدات الخارجية، بينما تركز المقومات العسكرية على الأمن الداخلي.", ans:false},
+      {q:"كانت المملكة العربية السعودية من الدول المؤسسة لكل من جامعة الدول العربية ومجلس التعاون الخليجي.", ans:true},
+      {q:"يقوم مجلس التعاون الخليجي على أساس المصير المشترك والرغبة في تحقيق التكامل بين أعضائه.", ans:true},
+      {q:"عارض الملك عبدالعزيز فكرة قيام جامعة الدول العربية بشكل كامل.", ans:false},
+      {q:"أحد أسباب اختيار الرياض مقراً لمجلس التعاون هو الثقل الدبلوماسي للمملكة.", ans:true},
+      {q:"تأسس مجلس التعاون الخليجي بهدف تعزيز التعاون الاقتصادي والاجتماعي والدفاعي بين دوله.", ans:true},
+    ]
+  },
+  {
+    id:2, name:"الكشوف الجغرافية والحروب العالمية", icon:"🗺️",
+    desc:"الكشوف الجغرافية الأوروبية، الحرب العالمية الأولى والثانية",
+    mcq:[
+      {q:"ما هو الدافع الاقتصادي المباشر الذي حرّك الكشوف الجغرافية الأوروبية؟", opts:["نشر المعرفة الجغرافية في العالم","البحث عن طريق تجاري إلى الشرق لا يمر بأراضي المسلمين","إثبات نظرية كروية الأرض عملياً","تطوير السفن وأدوات الملاحة"], ans:1},
+      {q:"ما النتيجة المباشرة لاكتشاف طريق رأس الرجاء الصالح على العالم الإسلامي؟", opts:["زيادة قوة دولة المماليك اقتصادياً","ازدهار التجارة في البحر المتوسط","تحول طرق التجارة العالمية بعيداً عن أراضيهم وخسارتهم الاقتصادية","توقف الرحلات البحرية العربية"], ans:2},
+      {q:"من هو الأمير البرتغالي الذي دعم ومول حركة الكشوف الجغرافية بشكل كبير حتى لُقب بالملاح؟", opts:["كريستوفر كولومبوس","فاسكو دا جاما","جيمس كوك","هنري الملاح"], ans:3},
+      {q:"أي من النتائج التالية لا يُعتبر من آثار الكشوف الجغرافية على العالم؟", opts:["تدفق الثروات والمواد الخام على أوروبا","تزايد التنافس الاستعماري بين الدول الأوروبية","تعزيز سيطرة العرب والمسلمين على التجارة العالمية","تطور المعرفة الجغرافية وفنون الملاحة"], ans:2},
+      {q:"يعود الفضل في استكمال اكتشاف السواحل الشرقية لأستراليا وبدء الاستعمار البريطاني فيها إلى الرحالة:", opts:["فاسكو دا جاما","جيمس كوك","أحمد بن ماجد","جون كابوت"], ans:1},
+      {q:"ما الحدث الذي يُعتبر السبب المباشر لاندلاع الحرب العالمية الأولى؟", opts:["أزمة مراكش","تأسيس عصبة الأمم","اغتيال ولي عهد النمسا في سراييفو","التنافس الاقتصادي بين بريطانيا وألمانيا"], ans:2},
+      {q:"أي من الدول التالية كانت جزءاً من دول المحور (الوسط)؟", opts:["فرنسا","روسيا","بريطانيا","الدولة العثمانية"], ans:3},
+      {q:"ما هي النتيجة الرئيسية لمعاهدة سيفر التي وُقعت عام 1920م؟", opts:["تأسيس الأمم المتحدة","تفكك الدولة العثمانية وتقليصها إلى دولة تركيا","إعلان استقلال الهند","إنهاء سباق التسلح في أوروبا"], ans:1},
+      {q:"الاتفاقية السرية التي هدفت إلى تقسيم مناطق النفوذ في المشرق العربي بين بريطانيا وفرنسا عُرفت باسم:", opts:["معاهدة فرساي","اتفاقية سايكس بيكو","وعد بلفور","معاهدة سيفر"], ans:1},
+      {q:"كم بلغ عدد القتلى تقريباً نتيجة الحرب العالمية الأولى؟", opts:["مئة ألف قتيل","مليون قتيل","تسعة ملايين قتيل","خمسون مليون قتيل"], ans:2},
+      {q:"أي من الدول التالية شكّلت حلف دول المحور في الحرب العالمية الثانية؟", opts:["الولايات المتحدة، بريطانيا، فرنسا، روسيا","ألمانيا، إيطاليا، اليابان","ألمانيا، روسيا، إيطاليا","الصين، بريطانيا"], ans:1},
+      {q:"ما هو الحدث الذي يُعتبر السبب المباشر لاندلاع الحرب العالمية الثانية عام 1939م؟", opts:["هجوم اليابان على بيرل هاربر","الأزمة الاقتصادية العالمية","غزو ألمانيا لبولندا","وصول هتلر للسلطة"], ans:2},
+      {q:"في أي عام ألقت الولايات المتحدة القنبلة الذرية على مدينة هيروشيما؟", opts:["1943م","1944م","1945م","1946م"], ans:2},
+      {q:"ماذا كان الموقف الرسمي للمملكة العربية السعودية في معظم سنوات الحرب العالمية الثانية؟", opts:["الانضمام لدول المحور","الحياد","الانضمام لدول الحلفاء","التوسط بين الطرفين"], ans:1},
+      {q:"أي من النتائج التالية تُعد من أبرز التغيرات السياسية بعد الحرب العالمية الثانية؟", opts:["استمرار سيطرة بريطانيا وفرنسا عالمياً","تأسيس عصبة الأمم","ظهور الولايات المتحدة والاتحاد السوفيتي كقوتين عظميين","توسع الإمبراطورية اليابانية"], ans:2},
+    ],
+    tf:[
+      {q:"سبق العرب والمسلمون الأوروبيين في ارتياد البحار ووضع الخرائط الدقيقة لمناطق واسعة من العالم القديم.", ans:true},
+      {q:"أدت الكشوف الجغرافية إلى انتعاش اقتصادي كبير في دول حوض البحر المتوسط مثل إيطاليا ومصر.", ans:false},
+      {q:"كان الدافع الديني المتمثل في نشر المسيحية أحد المحركات الرئيسية للكشوف الجغرافية الأوروبية.", ans:true},
+      {q:"اقتصرت نتائج الكشوف الجغرافية على الجوانب الاقتصادية فقط دون أن يكون لها آثار سياسية أو علمية.", ans:false},
+      {q:"يُعد إثبات كروية الأرض بشكل عملي من أهم النتائج العلمية التي ترتبت على حركة الكشوف الجغرافية.", ans:true},
+      {q:"اتخذ الملك عبد العزيز آل سعود موقفاً مسانداً لدول الحلفاء خلال الحرب العالمية الأولى.", ans:false},
+      {q:"كانت سياسة الولايات المتحدة قبل دخولها الحرب تتميز بالانخراط المباشر في الشؤون الأوروبية.", ans:false},
+      {q:"وعد بلفور هو تعهد بريطاني بإنشاء وطن قومي للشعب الفلسطيني.", ans:false},
+      {q:"يعتبر سباق التسلح بين القوى الأوروبية أحد الأسباب غير المباشرة التي مهدت للحرب.", ans:true},
+      {q:"أُنشئت منظمة عصبة الأمم بعد الحرب العالمية الأولى بهدف منع نشوب صراعات عالمية مستقبلية.", ans:true},
+      {q:"ساهمت الشروط القاسية لمعاهدة فرساي في تهيئة الأجواء السياسية لظهور الحزب النازي في ألمانيا.", ans:true},
+      {q:"كانت إيطاليا راضية تماماً عن مكاسبها بعد انتهاء الحرب العالمية الأولى.", ans:false},
+      {q:"كان الهجوم الياباني على ميناء بيرل هاربر هو السبب المباشر لدخول الولايات المتحدة الأمريكية الحرب.", ans:true},
+      {q:"بعد انتهاء الحرب العالمية الثانية، تم تقسيم ألمانيا وعاصمتها برلين بين دول الحلفاء.", ans:true},
+      {q:"عصبة الأمم نجحت في منع قيام الحرب العالمية الثانية.", ans:false},
+    ]
+  },
+  {
+    id:3, name:"دول العالم الكبرى", icon:"🌐",
+    desc:"الولايات المتحدة، الاتحاد الأوروبي، الصين، روسيا",
+    mcq:[
+      {q:"ما هو أول جنس بشري استوطن الأراضي التي تكوّنت منها الولايات المتحدة حسب النص؟", opts:["المستعمرون الإنجليز","عنصر المغول الآسيوي","المستعمرون الإسبان","الفايكنج"], ans:1},
+      {q:"أي من الولايات التالية هي الأكبر مساحةً في الولايات المتحدة الأمريكية؟", opts:["تكساس","كاليفورنيا","فلوريدا","ألاسكا"], ans:3},
+      {q:"يعود السبب الرئيسي في التنوع العرقي والثقافي في الولايات المتحدة إلى:", opts:["الهجرة الكبيرة من بلدان مختلفة","الحروب الأهلية","اتساع المساحة الجغرافية","القوة الاقتصادية"], ans:0},
+      {q:"ما هي السلسلة الجبلية الرئيسية التي تقع في شرق الولايات المتحدة؟", opts:["جبال روكي","جبال سيرانيفادا","جبال الأبلاش","جبال كاسكيد"], ans:2},
+      {q:"متى برزت الولايات المتحدة كقوة عظمى على الساحة العالمية بشكل واضح؟", opts:["قبل الحرب العالمية الأولى","بعد الحرب الأهلية الأمريكية","بعد الحرب العالمية الثانية","أثناء تأسيس المستعمرات"], ans:2},
+      {q:"ما هي المعاهدة التي أسست المجموعة الاقتصادية الأوروبية عام 1957م؟", opts:["معاهدة ماستريخت","معاهدة باريس","اتفاقية روما","اتفاقية شينجن"], ans:2},
+      {q:"أي من الأنهار التالية يُعد أطول الأنهار في الاتحاد الأوروبي وينبع من ألمانيا؟", opts:["نهر الراين","نهر السين","نهر الدانوب","نهر التايمز"], ans:0},
+      {q:"ما هو السبب الرئيسي الذي يفسر بطء النمو السكاني في معظم دول الاتحاد الأوروبي؟", opts:["ارتفاع معدلات الهجرة إلى الخارج","انخفاض المستوى المعيشي","تحديد النسل وتأخر سن الزواج","انتشار الأوبئة والأمراض"], ans:2},
+      {q:"أي من المؤسسات التالية هي المسؤولة عن إدارة عملة اليورو والحفاظ على استقرار الأسعار في منطقة اليورو؟", opts:["البرلمان الأوروبي","محكمة العدل الأوروبية","المفوضية الأوروبية","البنك المركزي الأوروبي"], ans:3},
+      {q:"ما هو الهدف الأساسي الذي أدى إلى تأسيس نواة الاتحاد الأوروبي بعد الحرب العالمية الثانية؟", opts:["منافسة الولايات المتحدة عسكرياً","نشر اللغات والثقافات الأوروبية","إعادة بناء أوروبا ومنع قيام حرب شاملة أخرى","استكشاف الموارد الطبيعية في القارات الأخرى"], ans:2},
+      {q:"أي من العوامل التالية يُعد من الأسباب الرئيسية لنجاح الصين الاقتصادي؟", opts:["الاعتماد الكامل على الزراعة","التصنيع منخفض التكلفة والسياسات الحكومية الداعمة","عزلة البلاد عن الاقتصاد العالمي","قلة عدد السكان"], ans:1},
+      {q:"ما هي المجموعة العرقية التي تشكل غالبية سكان الصين؟", opts:["التبت","الويغور","هان","المنغول"], ans:2},
+      {q:"ما الذي يميز مناخ الصين في فصل الشتاء؟", opts:["رياح جنوبية دافئة ورطبة","أمطار غزيرة في جميع أنحاء البلاد","اعتدال درجات الحرارة","رياح شمالية باردة وجافة"], ans:3},
+      {q:"تتركز غالبية الكثافة السكانية في الصين في:", opts:["السهول الشرقية الخصبة","هضبة التبت","المناطق الغربية الجبلية","الصحاري الشمالية"], ans:0},
+      {q:"أي من التضاريس التالية تشكل الحدود الطبيعية بين الصين والهند؟", opts:["صحراء جوبي","جبال الهيمالايا","نهر اليانغتسي","سهل شمال الصين"], ans:1},
+      {q:"في أي عام تفكك الاتحاد السوفيتي؟", opts:["1989م","1991م","1993م","1985م"], ans:1},
+      {q:"ما هو السبب الرئيسي لانخفاض الكثافة السكانية في روسيا؟", opts:["قلة الموارد الطبيعية","حجم البلاد الهائل والمناخ القاسي","صغر مساحة المدن","الحروب المستمرة"], ans:1},
+      {q:"ما السلسلة الجبلية التي تُعتبر الحد التقليدي الفاصل بين قارتي أوروبا وآسيا؟", opts:["جبال القوقاز","جبال الألب","جبال الأورال","جبال ستانوفوي"], ans:2},
+      {q:"تتمثل معظم صادرات روسيا الاتحادية في:", opts:["الملابس والمنسوجات","السيارات والتكنولوجيا","المنتجات الزراعية","المواد الخام وصادرات الطاقة"], ans:3},
+      {q:"ما الدولة التي تُعتبر الأصل التاريخي لروسيا وأُنشئت في القرن التاسع الميلادي؟", opts:["إمارة كييف روس","دوقية موسكو","الإمبراطورية البيزنطية","الإمبراطورية المغولية"], ans:0},
+    ],
+    tf:[
+      {q:"تأسست الولايات المتحدة الأمريكية في الأصل من خمسين مستعمرة بريطانية.", ans:false},
+      {q:"يُعد اتساع المساحة الجغرافية سبباً رئيسياً لتنوع المناخ والتضاريس في الولايات المتحدة.", ans:true},
+      {q:"أصبحت الولايات المتحدة القوة العظمى الوحيدة في العالم بعد انتهاء الحرب الباردة وتفكك الاتحاد السوفيتي.", ans:true},
+      {q:"يتركز معظم سكان الولايات المتحدة في المناطق الريفية والزراعية.", ans:false},
+      {q:"اللغة الإسبانية هي اللغة الرسمية والوحيدة المستخدمة في الولايات المتحدة الأمريكية.", ans:false},
+      {q:"كان الدافع الرئيسي لنشأة الاتحاد الأوروبي هو الرغبة في التوسع العسكري والسيطرة على مناطق جديدة.", ans:false},
+      {q:"تعتبر عملة اليورو الموحدة أحد أهم مظاهر التكامل الاقتصادي في الاتحاد الأوروبي.", ans:true},
+      {q:"يمتاز مناخ جميع دول الاتحاد الأوروبي بالبرودة الشديدة على مدار العام.", ans:false},
+      {q:"يعتبر الاتحاد الأوروبي أكبر تكتل اقتصادي في العالم من حيث حجم الناتج الإجمالي والتجارة العالمية.", ans:true},
+      {q:"تتكون السلطة التنفيذية في الاتحاد الأوروبي من البرلمان الأوروبي الذي يمثل الشعوب.", ans:false},
+      {q:"التضاريس في جمهورية الصين متشابهة في جميع أنحائها، وتغلب عليها السهول.", ans:false},
+      {q:"يعد التحول من مجتمع زراعي إلى صناعي أحد أسباب النمو الاقتصادي السريع في الصين.", ans:true},
+      {q:"يساهم تنوع تضاريس الصين ومناخها في امتلاكها تنوعاً إحيائياً كبيراً.", ans:true},
+      {q:"تمتلك الصين أقصر حدود برية في العالم.", ans:false},
+      {q:"تتركز معظم الصناعات الاستراتيجية والثقيلة في الصين تحت هيمنة الدولة.", ans:true},
+      {q:"تعتبر روسيا الاتحادية أكبر دولة في العالم من حيث المساحة.", ans:true},
+      {q:"يعيش معظم سكان روسيا في الجزء الآسيوي منها المعروف بسيبيريا.", ans:false},
+      {q:"الإنفاق العسكري الكبير يُعد من المشكلات الرئيسية التي تواجه الاقتصاد الروسي.", ans:true},
+      {q:"مناخ روسيا معتدل ومستقر في جميع أنحائها بسبب إطلالها على المحيط المتجمد الشمالي.", ans:false},
+      {q:"تُعد روسيا الاتحادية الوريث الرسمي للاتحاد السوفيتي في المقعد الدائم بمجلس الأمن.", ans:true},
+    ]
+  },
+  {
+    id:4, name:"المنظمات الدولية والإقليمية", icon:"🏛️",
+    desc:"الجامعة العربية، منظمة التعاون الإسلامي، أوبك، الأمم المتحدة",
+    mcq:[
+      {q:"أي من التالي يُعد السلطة العليا في جامعة الدول العربية ويتألف من ممثلي جميع الدول الأعضاء؟", opts:["الأمانة العامة","اللجان الدائمة","مجلس الجامعة","القمة العربية"], ans:2},
+      {q:"يقع المقر الدائم للأمانة العامة لجامعة الدول العربية في مدينة:", opts:["الرياض","القاهرة","دمشق","عمان"], ans:1},
+      {q:"الدولة التي أخذت بزمام المبادرة وبدأت المشاورات لتأسيس جامعة الدول العربية هي:", opts:["المملكة العربية السعودية","العراق","سوريا","مصر"], ans:3},
+      {q:"أُطلق اسم قمة القدس على القمة العربية التاسعة والعشرين التي عُقدت عام 1439هـ في مدينة:", opts:["جدة","الظهران","الكويت","شرم الشيخ"], ans:1},
+      {q:"أحد الأهداف الرئيسية لجامعة الدول العربية يتمثل في تحقيق مفهوم:", opts:["الأمن الجماعي العربي","الحياد المطلق","العزلة الإقليمية","الاندماج الاقتصادي الكامل"], ans:0},
+      {q:"في أي مدينة يقع المقر الرئيسي لرابطة العالم الإسلامي؟", opts:["الرياض","القاهرة","مكة المكرمة","المدينة المنورة"], ans:2},
+      {q:"تأسست رابطة العالم الإسلامي في عام:", opts:["1400هـ","1381هـ","1392هـ","1375هـ"], ans:1},
+      {q:"أي من الهيئات التالية تتبع لرابطة العالم الإسلامي وتُعنى بتقديم حلول شرعية للقضايا المعاصرة؟", opts:["منظمة التعاون الإسلامي","هيئة الإغاثة الإسلامية العالمية","مجلس التعاون الخليجي","المجمع الفقهي الإسلامي"], ans:3},
+      {q:"توصف رابطة العالم الإسلامي بأنها منظمة:", opts:["سياسية اقتصادية إقليمية","شعبية عالمية","عسكرية دفاعية","حكومية"], ans:1},
+      {q:"أحد الأهداف الرئيسية لرابطة العالم الإسلامي هو:", opts:["عقد اتفاقيات تجارية بين الدول","تقديم الإغاثة العاجلة للمتضررين من الكوارث","تنظيم أسعار النفط العالمية","الإشراف على البنوك المركزية"], ans:1},
+      {q:"أين عُقد المؤتمر الأول لقادة العالم الإسلامي الذي أفضى إلى تأسيس منظمة التعاون الإسلامي؟", opts:["جدة","الرباط","القاهرة","إسطنبول"], ans:1},
+      {q:"ما هي الهيئة التي تُعد الجهاز التنفيذي لمنظمة التعاون الإسلامي والمسؤولة عن تسيير أعمالها اليومية؟", opts:["مؤتمر القمة الإسلامي","الأمانة العامة","المؤتمر الإسلامي لوزراء الخارجية","البنك الإسلامي للتنمية"], ans:1},
+      {q:"كم يبلغ عدد الدول الأعضاء في منظمة التعاون الإسلامي؟", opts:["22 دولة","25 دولة","57 دولة","193 دولة"], ans:2},
+      {q:"أي من التالي يُعد من الأهداف الاقتصادية الرئيسية لمنظمة التعاون الإسلامي؟", opts:["إنشاء قوة عسكرية مشتركة","توحيد العملة في جميع الدول الأعضاء","تشجيع الحوار بين الأديان","تعزيز التعاون التجاري لإنشاء سوق إسلامية مشتركة"], ans:3},
+      {q:"ما هو الاسم الذي كانت تُعرف به منظمة التعاون الإسلامي سابقاً؟", opts:["رابطة العالم الإسلامي","منظمة المؤتمر الإسلامي","منظمة الدول الإسلامية","اتحاد العالم الإسلامي"], ans:1},
+      {q:"في أي عام تأسست منظمة الدول المصدرة للنفط (أوبك)؟", opts:["1945م","1973م","1960م","1980م"], ans:2},
+      {q:"أين يقع المقر الدائم لمنظمة أوبك حالياً؟", opts:["جنيف","فيينا","بغداد","الرياض"], ans:1},
+      {q:"أي من التالي يُعد أحد الأهداف الأساسية لمنظمة أوبك؟", opts:["زيادة المنافسة بين الدول الأعضاء","رفع أسعار النفط بشكل دائم","تحقيق الاستقرار في أسواق النفط العالمية","السيطرة على مصادر الطاقة المتجددة"], ans:2},
+      {q:"ما هو التأثير المباشر لانخفاض أسعار النفط على الدول المنتجة؟", opts:["زيادة النمو الاقتصادي","ارتفاع حجم العجز في الموازنات المالية","زيادة الإنفاق الحكومي","انخفاض معدلات البطالة"], ans:1},
+      {q:"ما هي السلطة العليا التي تتخذ القرارات الرئيسية في منظمة أوبك؟", opts:["لجنة الخبراء الاقتصاديين","الأمانة العامة","مجلس المحافظين","المؤتمر الوزاري"], ans:3},
+      {q:"ما هو الهدف الأساسي الذي أُنشئت من أجله هيئة الأمم المتحدة؟", opts:["تنظيم التجارة العالمية","حفظ السلم والأمن الدوليين","تقديم القروض للدول","الإشراف على التعليم في العالم"], ans:1},
+      {q:"في أي مدينة يقع مقر محكمة العدل الدولية، الجهاز القضائي الرئيسي للأمم المتحدة؟", opts:["نيويورك","جنيف","لاهاي","باريس"], ans:2},
+      {q:"أي من أجهزة الأمم المتحدة يضم جميع الدول الأعضاء ولكل منها صوت واحد؟", opts:["مجلس الأمن","الأمانة العامة","المجلس الاقتصادي والاجتماعي","الجمعية العامة"], ans:3},
+      {q:"كم عدد الأعضاء في مجلس الأمن التابع للأمم المتحدة؟", opts:["5 أعضاء","10 أعضاء","15 عضواً","15 أعضاء دائمون"], ans:2},
+      {q:"في أي عام تم توقيع ميثاق الأمم المتحدة في سان فرانسيسكو؟", opts:["1919م","1943م","1945م","1950م"], ans:2},
+      {q:"في أي عام تم تأسيس مجموعة العشرين (G20)؟", opts:["1989م","1999م","2008م","2020م"], ans:1},
+      {q:"ما هو السبب الرئيسي الذي أدى إلى إنشاء مجموعة العشرين؟", opts:["الأزمات السياسية في أوروبا","الأزمات المالية في التسعينيات الميلادية","زيادة التعاون الثقافي","تأسيس منظمة تجارية جديدة"], ans:1},
+      {q:"أي من التالي يمثل الدولة العربية الوحيدة العضو في مجموعة العشرين؟", opts:["جمهورية مصر العربية","دولة الإمارات العربية المتحدة","المملكة العربية السعودية","دولة قطر"], ans:2},
+      {q:"ما المدينة التي استضافت قمة مجموعة العشرين عام 2020م؟", opts:["بوينس آيرس","أوساكا","تورونتو","الرياض"], ans:3},
+      {q:"أحد أبرز إنجازات مجموعة العشرين هو:", opts:["إنشاء عملة موحدة","إلغاء الحواجز الجمركية بالكامل","التصدي لتمويل الإرهاب","توحيد الأنظمة التعليمية"], ans:2},
+    ],
+    tf:[
+      {q:"نضجت فكرة إقامة تنظيم عربي واحد إبان الحرب العالمية الأولى.", ans:false},
+      {q:"لكل دولة عضو في مجلس الجامعة صوت واحد بغض النظر عن عدد ممثليها أو مساحتها.", ans:true},
+      {q:"تقتصر عضوية الجامعة العربية على الدول السبع المؤسسة فقط.", ans:false},
+      {q:"من أهداف الجامعة النظر في النزاعات بين الدول الأعضاء والعمل على حلها سلمياً.", ans:true},
+      {q:"تم تأسيس جامعة الدول العربية قبل إنشاء هيئة الأمم المتحدة ببضعة أشهر.", ans:true},
+      {q:"تأسست رابطة العالم الإسلامي بموجب قرار من المؤتمر الإسلامي العام.", ans:true},
+      {q:"يقتصر نشاط رابطة العالم الإسلامي على المملكة العربية السعودية فقط.", ans:false},
+      {q:"تهدف رابطة العالم الإسلامي إلى نشر اللغة العربية ورفع مستوى تعليمها.", ans:true},
+      {q:"رابطة العالم الإسلامي هي منظمة حكومية تمثل حكومات الدول الإسلامية.", ans:false},
+      {q:"من جهود الرابطة العمل على إحياء مبدأ التعارف والتعايش بين المجتمعات.", ans:true},
+      {q:"يقع المقر الدائم لمنظمة التعاون الإسلامي في مدينة الرباط بالمملكة المغربية.", ans:false},
+      {q:"من أهداف منظمة التعاون الإسلامي تعزيز أواصر الأخوة والتضامن بين الدول الأعضاء.", ans:true},
+      {q:"مؤتمر القمة الإسلامي هو أعلى هيئة في المنظمة ويجتمع مرة كل سنة.", ans:false},
+      {q:"تعد منظمة التعاون الإسلامي منظمة شعبية غير حكومية.", ans:false},
+      {q:"تسعى منظمة التعاون الإسلامي إلى احترام سيادة الدول الأعضاء وعدم التدخل في شؤونها الداخلية.", ans:true},
+      {q:"تأسست منظمة أوبك بهدف حماية مصالح الدول المستهلكة للنفط بشكل أساسي.", ans:false},
+      {q:"ارتفاع أسعار النفط يؤدي غالباً إلى ارتفاع أسعار الكثير من السلع الاستهلاكية الأخرى.", ans:true},
+      {q:"جميع الدول الأعضاء في منظمة أوبك تقع في قارة آسيا.", ans:false},
+      {q:"كان المقر الأول لمنظمة أوبك في مدينة فيينا بالنمسا.", ans:true},
+      {q:"تهدف أوبك إلى ضمان إمدادات نفطية منتظمة للدول المستهلكة بأسعار معقولة.", ans:true},
+      {q:"تُعد المملكة العربية السعودية من الدول التي انضمت حديثاً إلى هيئة الأمم المتحدة وليست من الدول المؤسسة.", ans:false},
+      {q:"تتخذ القرارات في المسائل المهمة بالجمعية العامة للأمم المتحدة بأغلبية الثلثين.", ans:true},
+      {q:"مجلس الوصاية هو الجهاز القضائي الرئيسي في هيئة الأمم المتحدة.", ans:false},
+      {q:"تقع جميع الأجهزة الرئيسية الستة لهيئة الأمم المتحدة في مدينة نيويورك.", ans:false},
+      {q:"قرارات مجلس الأمن ملزمة لجميع الدول الأعضاء في الأمم المتحدة.", ans:true},
+      {q:"تمثل دول مجموعة العشرين أكثر من 90% من الناتج العالمي الخام.", ans:true},
+      {q:"تأسست مجموعة العشرين لتحل محل مجموعة الثمانية بشكل كامل.", ans:false},
+      {q:"رئاسة مجموعة العشرين دائمة وثابتة في دولة واحدة.", ans:false},
+      {q:"ترأست المملكة العربية السعودية القمة الاستثنائية لمجموعة العشرين عام 2020م لمواجهة جائحة كورونا.", ans:true},
+      {q:"يعكس اختيار المملكة عضواً في المجموعة مكانتها الاقتصادية والسياسية الهامة.", ans:true},
+    ]
+  }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let currentUnit = null;
+let currentQs = [];
+let currentIdx = 0;
+let score = 0;
+let answered = false;
+let quizSource = 'home';
+
+// ============================================================
+// INIT
+// ============================================================
+function init(){
+  renderUnits();
+}
+
+function renderUnits(){
+  const list = document.getElementById('units-list');
+  list.innerHTML = UNITS.map(u=>`
+    <div class="unit-card" onclick="openUnit(${u.id})">
+      <div class="unit-num">
+        <div class="n">${u.id}</div>
+        <div class="lbl">وحدة</div>
+      </div>
+      <div class="unit-info">
+        <div class="unit-name">${u.name}</div>
+        <div class="unit-desc">${u.desc}</div>
+        <div class="unit-counts">
+          <div class="count-chip">📝 ${u.mcq.length} اختيار</div>
+          <div class="count-chip green">✅ ${u.tf.length} صح/خطأ</div>
+        </div>
+      </div>
+      <div class="unit-arrow">${u.icon}</div>
+    </div>
+  `).join('');
+}
+
+function openUnit(id){
+  currentUnit = UNITS.find(u=>u.id===id);
+  quizSource = 'unit';
+  document.getElementById('uh-title').textContent = `الوحدة ${id}: ${currentUnit.name}`;
+  document.getElementById('uh-sub').textContent = `${currentUnit.mcq.length} اختيار · ${currentUnit.tf.length} صح/خطأ`;
+  document.getElementById('uhc-icon').textContent = currentUnit.icon;
+  document.getElementById('uhc-title').textContent = currentUnit.name;
+  document.getElementById('uhc-mcq').textContent = `${currentUnit.mcq.length} اختيار من متعدد`;
+  document.getElementById('uhc-tf').textContent = `${currentUnit.tf.length} صح وخطأ`;
+  showScreen('unit-screen');
+}
+
+// ============================================================
+// QUIZ STARTERS
+// ============================================================
+function startAllMCQ(){
+  const all = UNITS.flatMap(u=>u.mcq.map(q=>({...q,type:'mcq'})));
+  startQuiz(shuffle(all), 'اختبار شامل - اختيار من متعدد');
+}
+function startAllTF(){
+  const all = UNITS.flatMap(u=>u.tf.map(q=>({...q,type:'tf'})));
+  startQuiz(shuffle(all), 'اختبار شامل - صح وخطأ');
+}
+function startMixed(){
+  const mcq = UNITS.flatMap(u=>u.mcq.map(q=>({...q,type:'mcq'})));
+  const tf = UNITS.flatMap(u=>u.tf.map(q=>({...q,type:'tf'})));
+  const all = shuffle([...mcq,...tf]).slice(0,25);
+  startQuiz(all, 'اختبار مختلط - عشوائي');
+}
+function startUnitMCQ(){
+  const qs = currentUnit.mcq.map(q=>({...q,type:'mcq'}));
+  startQuiz(qs, `الوحدة ${currentUnit.id}: اختيار متعدد`);
+}
+function startUnitTF(){
+  const qs = currentUnit.tf.map(q=>({...q,type:'tf'}));
+  startQuiz(qs, `الوحدة ${currentUnit.id}: صح وخطأ`);
+}
+function startUnitRandom(){
+  const mcq = currentUnit.mcq.map(q=>({...q,type:'mcq'}));
+  const tf = currentUnit.tf.map(q=>({...q,type:'tf'}));
+  const all = shuffle([...mcq,...tf]).slice(0,15);
+  startQuiz(all, `الوحدة ${currentUnit.id}: اختبار عشوائي`);
+}
+
+function startQuiz(qs, title){
+  currentQs = qs;
+  currentIdx = 0;
+  score = 0;
+  document.getElementById('qh-title').textContent = title;
+  showScreen('quiz-screen');
+  renderQ();
+}
+
+// ============================================================
+// RENDER QUESTION
+// ============================================================
+function renderQ(){
+  const q = currentQs[currentIdx];
+  answered = false;
+
+  document.getElementById('q-num-badge').textContent = currentIdx+1;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('qh-counter').textContent = `${currentIdx+1}/${currentQs.length}`;
+  document.getElementById('prog-fill').style.width = `${(currentIdx/currentQs.length)*100}%`;
+
+  if(q.type==='mcq'){
+    document.getElementById('q-type-badge').textContent = '📝 اختيار من متعدد';
+    renderMCQ(q);
+  } else {
+    document.getElementById('q-type-badge').textContent = '✅ صح أم خطأ';
+    renderTF(q);
+  }
+
+  document.getElementById('feedback-box').className='feedback-box';
+  document.getElementById('next-btn').className='next-btn';
+}
+
+function renderMCQ(q){
+  const letters=['أ','ب','ج','د'];
+  document.getElementById('answers-container').innerHTML =
+    `<div class="options">${q.opts.map((opt,i)=>`
+      <button class="option-btn" onclick="selectMCQ(${i})" id="opt-${i}">
+        <span class="opt-letter">${letters[i]}</span>${opt}
+      </button>`).join('')}</div>`;
+}
+
+function renderTF(q){
+  document.getElementById('answers-container').innerHTML =
+    `<div class="tf-options">
+      <button class="tf-btn" onclick="selectTF(true)" id="tf-true">✅ صحيح</button>
+      <button class="tf-btn" onclick="selectTF(false)" id="tf-false">❌ خطأ</button>
+    </div>`;
+}
+
+function selectMCQ(idx){
+  if(answered)return;
+  answered=true;
+  const q=currentQs[currentIdx];
+  document.querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
+  if(idx===q.ans){score++;document.getElementById(`opt-${idx}`).classList.add('correct');showFB(true,'إجابة صحيحة! 🎉');}
+  else{document.getElementById(`opt-${idx}`).classList.add('wrong');document.getElementById(`opt-${q.ans}`).classList.add('correct');showFB(false,`الصواب: ${q.opts[q.ans]}`);}
+  showNext();
+}
+
+function selectTF(val){
+  if(answered)return;
+  answered=true;
+  const q=currentQs[currentIdx];
+  document.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);
+  const correct=val===q.ans;
+  if(correct){score++;document.getElementById(val?'tf-true':'tf-false').classList.add('correct');showFB(true,'إجابة صحيحة! 🎉');}
+  else{document.getElementById(val?'tf-true':'tf-false').classList.add('wrong');document.getElementById(q.ans?'tf-true':'tf-false').classList.add('correct');showFB(false,`الجواب الصحيح: ${q.ans?'صحيح ✅':'خطأ ❌'}`);}
+  showNext();
+}
+
+function showFB(correct,text){
+  const fb=document.getElementById('feedback-box');
+  fb.className=`feedback-box show ${correct?'correct-fb':'wrong-fb'}`;
+  document.getElementById('fb-icon').textContent=correct?'✅':'❌';
+  document.getElementById('fb-text').textContent=text;
+}
+
+function showNext(){
+  const btn=document.getElementById('next-btn');
+  btn.className='next-btn show';
+  btn.textContent=currentIdx<currentQs.length-1?'التالي ←':'📊 النتيجة';
+}
+
+function nextQ(){
+  currentIdx++;
+  if(currentIdx>=currentQs.length)showResult();
+  else renderQ();
+}
+
+function showResult(){
+  const total=currentQs.length;
+  const pct=Math.round((score/total)*100);
+  let emoji='😔',title='حاولي مجدداً';
+  if(pct>=90){emoji='🏆';title='ممتازة! إبداع!';}
+  else if(pct>=75){emoji='🌟';title='أحسنت! جيد جداً!';}
+  else if(pct>=60){emoji='👍';title='جيد! واصلي!';}
+  else if(pct>=40){emoji='📚';title='راجعي المادة';}
+
+  document.getElementById('res-emoji').textContent=emoji;
+  document.getElementById('res-title').textContent=title;
+  document.getElementById('res-correct').textContent=score;
+  document.getElementById('res-total').textContent=total;
+  const p=document.getElementById('res-pct');
+  p.textContent=`${pct}%`;p.style.color=pct>=60?'#4caf50':'#f44336';
+  document.getElementById('val-c').textContent=score;
+  document.getElementById('val-w').textContent=total-score;
+  showScreen('result-screen');
+  setTimeout(()=>{
+    document.getElementById('bar-c').style.width=`${pct}%`;
+    document.getElementById('bar-w').style.width=`${100-pct}%`;
+  },100);
+}
+
+function retryQuiz(){
+  currentIdx=0;score=0;
+  currentQs=shuffle(currentQs);
+  showScreen('quiz-screen');renderQ();
+}
+
+// ============================================================
+// ALL-Q REVIEW
+// ============================================================
+function showUnitAllQ(){
+  document.getElementById('allq-title').textContent=`مراجعة: ${currentUnit.name}`;
+  document.getElementById('allq-sub').textContent=`${currentUnit.mcq.length+currentUnit.tf.length} سؤال مع الإجابات`;
+  const body=document.getElementById('allq-body');
+  const letters=['أ','ب','ج','د'];
+  body.innerHTML=`
+    <div class="allq-section-title">📝 اختيار من متعدد (${currentUnit.mcq.length} سؤال)</div>
+    ${currentUnit.mcq.map((q,i)=>`
+      <div class="q-item">
+        <div class="qi-num">س${i+1}</div>
+        <div class="qi-text">${q.q}</div>
+        <div class="qi-answer correct-a">✅ ${letters[q.ans]}) ${q.opts[q.ans]}</div>
+      </div>`).join('')}
+    <div class="allq-section-title">✅ صح وخطأ (${currentUnit.tf.length} فقرة)</div>
+    ${currentUnit.tf.map((q,i)=>`
+      <div class="q-item tf-item">
+        <div class="qi-num">ف${i+1}</div>
+        <div class="qi-text">${q.q}</div>
+        <div class="qi-answer ${q.ans?'tf-t':'tf-f'}">${q.ans?'✅ صحيح':'❌ خطأ'}</div>
+      </div>`).join('')}
+  `;
+  showScreen('allq-screen');
+}
+
+function goBackAllQ(){
+  if(quizSource==='unit')showScreen('unit-screen');
+  else showScreen('home');
+}
+function exitQuiz(){
+  if(quizSource==='unit')showScreen('unit-screen');
+  else showScreen('home');
+}
+
+// ============================================================
+// UTILS
+// ============================================================
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+init();
+</script>
+</body>
+</html>
